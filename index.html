@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Rehan Karim — Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#0F1A15',
+          surface: '#16241D',
+          border: '#23362C',
+          ink: '#F1F5F0',
+          muted: '#93AB9D',
+          mint: '#7FE0A8',
+          mintdim: '#5CAE83',
+          gold: '#E8C879',
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0F1A15; }
+  ::selection { background: #7FE0A8; color: #0F1A15; }
+
+  .fade-line { position: relative; }
+  .fade-line::after {
+    content: '';
+    position: absolute; left: 0; bottom: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, #23362C 0%, transparent 100%);
+  }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: '';
+    position: absolute; left: 0; bottom: -4px;
+    width: 0; height: 1px;
+    background: #7FE0A8;
+    transition: width .25s ease;
+  }
+  .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+  .nav-link.active { color: #F1F5F0; }
+
+  .project-card { transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: #5CAE83;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+  }
+
+  .skill-fill { transform-origin: left; animation: grow 1.2s ease forwards; }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  .typewriter { overflow: hidden; white-space: nowrap; width: 0; animation: type 2.6s steps(38, end) forwards .4s; }
+  @keyframes type { to { width: 100%; } }
+
+  .caret { border-right: 2px solid #7FE0A8; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { border-color: transparent; } }
+
+  input:focus, textarea:focus { outline: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .typewriter { animation: none; width: 100%; }
+    .skill-fill { animation: none; transform: scaleX(1); }
+    .caret { animation: none; }
+  }
+
+  .timeline-line { background: linear-gradient(180deg, #23362C 0%, #23362C 90%, transparent 100%); }
+</style>
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+<!-- NAV -->
+<header id="site-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-border/70 bg-bg/85 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <a href="#home" class="font-serif text-lg tracking-tight text-ink">Rehan<span class="text-mint">.</span>dev</a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm text-muted">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="hidden md:flex items-center gap-3">
+      <a href="https://github.com/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted hover:text-mint hover:border-mint transition-colors" aria-label="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.42.36.78 1.07.78 2.16v3.2c0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+      </a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted hover:text-mint hover:border-mint transition-colors" aria-label="LinkedIn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+    </div>
+
+    <button id="menu-btn" class="md:hidden text-ink" aria-label="Toggle menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-bg px-6 py-4 flex flex-col gap-4 text-sm text-muted">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#education" class="nav-link">Education</a>
+    <a href="#skills" class="nav-link">Skills</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <div class="flex gap-3 pt-2">
+      <a href="https://github.com/" target="_blank" rel="noopener" class="text-muted hover:text-mint">GitHub</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener" class="text-muted hover:text-mint">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="pt-40 pb-24 px-6 lg:px-10 max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+  <div>
+    <p class="text-muted text-sm mb-5">Software Engineering Student — Islamia University of Bahawalpur</p>
+    <h1 class="font-serif text-5xl sm:text-6xl leading-[1.05] tracking-tight text-ink mb-6">
+      Muhammad Rehan Karim
+    </h1>
+    <p class="text-xl text-mint font-serif italic mb-6">Frontend Developer</p>
+    <p class="text-muted text-base leading-relaxed max-w-md mb-9">
+      I'm a passionate frontend developer and software engineering student, focused on building modern,
+      responsive, and user-friendly websites with HTML, CSS, JavaScript, and Tailwind CSS.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#projects" class="px-6 py-3 rounded-full bg-mint text-bg text-sm font-medium hover:bg-mintdim transition-colors">View my work</a>
+      <a href="#contact" class="px-6 py-3 rounded-full border border-border text-ink text-sm font-medium hover:border-mint transition-colors">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="relative">
+    <div class="rounded-xl border border-border bg-surface overflow-hidden shadow-2xl shadow-black/30">
+      <div class="flex items-center gap-2 px-4 py-3 border-b border-border">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#E86A5C]"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-[#E8C879]"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+        <span class="ml-2 text-xs text-muted font-mono">profile.js</span>
+      </div>
+      <div class="p-6 font-mono text-sm leading-relaxed">
+<pre class="typewriter caret"><span class="text-mintdim">const</span> <span class="text-mint">developer</span> = {
+  name: <span class="text-gold">"Rehan Karim"</span>,
+  role: <span class="text-gold">"Frontend Developer"</span>,
+  stack: [<span class="text-gold">"HTML"</span>, <span class="text-gold">"CSS"</span>, <span class="text-gold">"JS"</span>],
+  learning: <span class="text-gold">"always"</span>,
+};</pre>
+      </div>
+    </div>
+    <div class="absolute -bottom-5 -right-5 w-24 h-24 rounded-xl border border-border bg-surface -z-10"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="fade-line py-24 px-6 lg:px-10 max-w-6xl mx-auto">
+  <div class="grid md:grid-cols-[220px_1fr] gap-12 items-start">
+    <div class="w-44 h-44 rounded-full bg-surface border border-border overflow-hidden mx-auto md:mx-0">
+     <img src="./Media/Rao GGG.jpg" alt="">
+    </div>
+    <div>
+      <p class="text-muted text-sm mb-3">About me</p>
+      <h2 class="font-serif text-3xl sm:text-4xl text-ink mb-5 max-w-lg">Building interfaces with care, one component at a time.</h2>
+      <p class="text-muted leading-relaxed max-w-xl mb-4">
+        I'm currently pursuing a BS in Software Engineering at the Islamia University of Bahawalpur (IUB).
+        My focus is frontend development — turning ideas into clean, responsive interfaces that feel good to use.
+      </p>
+      <p class="text-muted leading-relaxed max-w-xl">
+        Outside of coursework, I build practice projects to sharpen my HTML, CSS, and JavaScript fundamentals,
+        and I'm steadily expanding into C++ and Python to round out my engineering foundation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="fade-line py-24 px-6 lg:px-10 max-w-6xl mx-auto">
+  <p class="text-muted text-sm mb-3">Education</p>
+  <h2 class="font-serif text-3xl sm:text-4xl text-ink mb-14 max-w-lg">Academic path</h2>
+
+  <div class="relative max-w-2xl">
+    <div class="absolute left-[7px] top-2 bottom-2 w-px timeline-line"></div>
+
+    <div class="relative pl-10 pb-12">
+      <span class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-bg border-2 border-mint"></span>
+      <p class="text-xs text-mint font-mono mb-1">In progress</p>
+      <h3 class="text-lg text-ink font-medium mb-1">BS Software Engineering</h3>
+      <p class="text-muted text-sm">Islamia University of Bahawalpur (IUB)</p>
+    </div>
+
+    <div class="relative pl-10 pb-12">
+      <span class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-bg border-2 border-border"></span>
+      <p class="text-xs text-muted font-mono mb-1">Completed</p>
+      <h3 class="text-lg text-ink font-medium mb-1">FSc (Pre-Engineering)</h3>
+      <p class="text-muted text-sm">Higher Secondary Education</p>
+    </div>
+
+    <div class="relative pl-10">
+      <span class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-bg border-2 border-border"></span>
+      <p class="text-xs text-muted font-mono mb-1">Completed</p>
+      <h3 class="text-lg text-ink font-medium mb-1">Matriculation</h3>
+      <p class="text-muted text-sm">Secondary School Certificate</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="fade-line py-24 px-6 lg:px-10 max-w-6xl mx-auto">
+  <p class="text-muted text-sm mb-3">Skills</p>
+  <h2 class="font-serif text-3xl sm:text-4xl text-ink mb-14 max-w-lg">Tools I build with</h2>
+
+  <div class="grid md:grid-cols-2 gap-x-16 gap-y-8">
+    <div>
+      <div class="flex justify-between text-sm mb-2"><span class="text-ink">HTML</span><span class="text-muted font-mono">Core</span></div>
+      <div class="h-1.5 rounded-full bg-surface overflow-hidden"><div class="skill-fill h-full bg-mint" style="width:90%"></div></div>
+    </div>
+    <div>
+      <div class="flex justify-between text-sm mb-2"><span class="text-ink">CSS</span><span class="text-muted font-mono">Core</span></div>
+      <div class="h-1.5 rounded-full bg-surface overflow-hidden"><div class="skill-fill h-full bg-mint" style="width:88%"></div></div>
+    </div>
+    <div>
+      <div class="flex justify-between text-sm mb-2"><span class="text-ink">JavaScript</span><span class="text-muted font-mono">Core</span></div>
+      <div class="h-1.5 rounded-full bg-surface overflow-hidden"><div class="skill-fill h-full bg-mint" style="width:80%"></div></div>
+    </div>
+    <div>
+      <div class="flex justify-between text-sm mb-2"><span class="text-ink">Tailwind CSS</span><span class="text-muted font-mono">Core</span></div>
+      <div class="h-1.5 rounded-full bg-surface overflow-hidden"><div class="skill-fill h-full bg-mint" style="width:85%"></div></div>
+    </div>
+    <div>
+      <div class="flex justify-between text-sm mb-2"><span class="text-ink">C++</span><span class="text-muted font-mono">Growing</span></div>
+      <div class="h-1.5 rounded-full bg-surface overflow-hidden"><div class="skill-fill h-full bg-gold" style="width:60%"></div></div>
+    </div>
+    <div>
+      <div class="flex justify-between text-sm mb-2"><span class="text-ink">Python</span><span class="text-muted font-mono">Growing</span></div>
+      <div class="h-1.5 rounded-full bg-surface overflow-hidden"><div class="skill-fill h-full bg-gold" style="width:55%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="fade-line py-24 px-6 lg:px-10 max-w-6xl mx-auto">
+  <p class="text-muted text-sm mb-3">Projects</p>
+  <h2 class="font-serif text-3xl sm:text-4xl text-ink mb-14 max-w-lg">Things I've built</h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <article class="project-card rounded-xl border border-border bg-surface p-6 flex flex-col">
+      <div class="h-32 rounded-lg bg-bg border border-border mb-5 flex items-center justify-center">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7FE0A8" stroke-width="1.5"><path d="M3 3h18v4H3zM3 10h18v11H3z"/><path d="M8 14h8"/></svg>
+      </div>
+      <h3 class="text-lg text-ink font-medium mb-2">Audionic-style E-commerce Site</h3>
+      <p class="text-muted text-sm leading-relaxed mb-4 flex-1">
+        A responsive product-listing storefront inspired by Audionic, with category browsing,
+        product cards, and a cart-ready layout built from scratch.
+      </p>
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="text-xs font-mono px-2 py-1 rounded border border-border text-muted">HTML</span>
+        <span class="text-xs font-mono px-2 py-1 rounded border border-border text-muted">CSS</span>
+        <span class="text-xs font-mono px-2 py-1 rounded border border-border text-muted">JavaScript</span>
+      </div>
+      <a href="#" class="text-sm text-mint hover:text-mintdim">View project</a>
+    </article>
+
+    <article class="project-card rounded-xl border border-border bg-surface p-6 flex flex-col">
+      <div class="h-32 rounded-lg bg-bg border border-border mb-5 flex items-center justify-center">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7FE0A8" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M4 9h16"/></svg>
+      </div>
+      <h3 class="text-lg text-ink font-medium mb-2">PCB Website</h3>
+      <p class="text-muted text-sm leading-relaxed mb-4 flex-1">
+        A clean, informational site concept for a PCB design/electronics brand, focused on
+        clear product presentation and a structured navigation flow.
+      </p>
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="text-xs font-mono px-2 py-1 rounded border border-border text-muted">HTML</span>
+        <span class="text-xs font-mono px-2 py-1 rounded border border-border text-muted">CSS</span>
+        <span class="text-xs font-mono px-2 py-1 rounded border border-border text-muted">Tailwind</span>
+      </div>
+      <a href="#" class="text-sm text-mint hover:text-mintdim">View project</a>
+    </article>
+
+    <article class="project-card rounded-xl border border-border bg-surface p-6 flex flex-col">
+      <div class="h-32 rounded-lg bg-bg border border-border mb-5 flex items-center justify-center">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7FE0A8" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      </div>
+      <h3 class="text-lg text-ink font-medium mb-2">AOS-style Animated Site</h3>
+      <p class="text-muted text-sm leading-relaxed mb-4 flex-1">
+        A scroll-driven landing page exploring Animate-On-Scroll style reveal effects,
+        built to practice motion timing and layout composition.
+      </p>
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="text-xs font-mono px-2 py-1 rounded border border-border text-muted">HTML</span>
+        <span class="text-xs font-mono px-2 py-1 rounded border border-border text-muted">CSS</span>
+        <span class="text-xs font-mono px-2 py-1 rounded border border-border text-muted">JavaScript</span>
+      </div>
+      <a href="#" class="text-sm text-mint hover:text-mintdim">View project</a>
+    </article>
+  </div>
+</section>
+
+<!-- EXPERIENCE / LEARNING -->
+<section id="experience" class="fade-line py-24 px-6 lg:px-10 max-w-6xl mx-auto">
+  <p class="text-muted text-sm mb-3">Experience &amp; learning</p>
+  <h2 class="font-serif text-3xl sm:text-4xl text-ink mb-14 max-w-lg">Currently sharpening</h2>
+
+  <div class="grid sm:grid-cols-3 gap-6">
+    <div class="border border-border rounded-xl p-6 bg-surface">
+      <h3 class="text-ink font-medium mb-2">Frontend Fundamentals</h3>
+      <p class="text-muted text-sm leading-relaxed">Deepening HTML, CSS, and JavaScript through hands-on practice projects.</p>
+    </div>
+    <div class="border border-border rounded-xl p-6 bg-surface">
+      <h3 class="text-ink font-medium mb-2">Utility-first Styling</h3>
+      <p class="text-muted text-sm leading-relaxed">Building faster, consistent UI with Tailwind CSS across every new project.</p>
+    </div>
+    <div class="border border-border rounded-xl p-6 bg-surface">
+      <h3 class="text-ink font-medium mb-2">Core Programming</h3>
+      <p class="text-muted text-sm leading-relaxed">Strengthening problem-solving fundamentals with C++ and Python.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 px-6 lg:px-10 max-w-6xl mx-auto">
+  <p class="text-muted text-sm mb-3">Contact</p>
+  <h2 class="font-serif text-3xl sm:text-4xl text-ink mb-14 max-w-lg">Let's work together</h2>
+
+  <div class="grid md:grid-cols-2 gap-12">
+    <div>
+      <p class="text-muted leading-relaxed max-w-sm mb-8">
+        Have a project in mind, or just want to say hello? My inbox is open —
+        I usually reply within a day or two.
+      </p>
+      <div class="space-y-4 text-sm">
+        <div class="flex items-center gap-3 text-muted">
+          <span class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-mint">✉</span>
+          raorehanr65@gmail.com
+        </div>
+        <div class="flex items-center gap-3 text-muted">
+          <span class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-mint">☎</span>
+          +92 3155309681
+        </div>
+        <div class="flex items-center gap-3 text-muted">
+          <span class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-mint">◎</span>
+          Bahawalpur, Pakistan
+        </div>
+      </div>
+      <div class="flex gap-3 mt-8">
+        <a href="https://github.com/raorehanr65-wq" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-full border border-border text-sm text-ink hover:border-mint transition-colors">GitHub</a>
+        <a href="" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-full border border-border text-sm text-ink hover:border-mint transition-colors">LinkedIn</a>
+      </div>
+    </div>
+
+    <form class="space-y-5" onsubmit="event.preventDefault(); this.reset(); document.getElementById('form-note').classList.remove('hidden');">
+      <div>
+        <label class="text-sm text-muted block mb-2">Name</label>
+        <input type="text" required class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-sm text-ink focus:border-mint transition-colors" placeholder="Your name">
+      </div>
+      <div>
+        <label class="text-sm text-muted block mb-2">Email</label>
+        <input type="email" required class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-sm text-ink focus:border-mint transition-colors" placeholder="you@example.com">
+      </div>
+      <div>
+        <label class="text-sm text-muted block mb-2">Message</label>
+        <textarea required rows="4" class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-sm text-ink focus:border-mint transition-colors" placeholder="Tell me about your project"></textarea>
+      </div>
+      <button type="submit" class="px-6 py-3 rounded-full bg-mint text-bg text-sm font-medium hover:bg-mintdim transition-colors">Send message</button>
+      <p id="form-note" class="hidden text-xs text-mint">Thanks — this is a static demo form, so connect it to a backend or form service to receive messages.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="border-t border-border py-10 px-6 lg:px-10">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted">
+    <p class="font-serif text-ink">Rehan<span class="text-mint">.</span>dev</p>
+    <p>© 2026 Muhammad Rehan Karim. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const setActive = () => {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 120;
+      if (window.scrollY >= top) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', setActive);
+  setActive();
+</script>
+
+</body>
+</html>
